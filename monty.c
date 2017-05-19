@@ -8,9 +8,10 @@
  */
 int main (int argc, char *argv[])
 {
-	stack_t stack = NULL;
+	stack_t **stack = NULL;
 	char *buffer = NULL;
 	unsigned int line_number;
+	int n;
 
 	if (argc != 2)
 	{
@@ -32,13 +33,20 @@ int main (int argc, char *argv[])
 
 		/* if token has an argument, strtok again? */
 
-		/* search struct of opcodes */
+		/* search struct of opcodes (opcode will be defined from strtok) */
 		if (opcode == push)
-			/*do this */
-			;
+		{
+			push(*stack, line_number, n);
+		}
+		/*do push function, has extra argument in it */
+		else if
+			/*search opcode struct, match opcode to function pointers */
+			opcode_struct(opcode);
 		else
-			/*search opcode struct */
-
+		{
+			printf("L%d: unknown instruction %s\n", line_number, opcode);
+			return (EXIT_FAILURE);
+		}
 		/* execute function (with argument if there is one */
 
 		/* increment line_number count */
