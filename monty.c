@@ -58,7 +58,7 @@ int main (int argc, char *argv[])
 		}
 		line_number++;
 	}
-	/* FREE EVERYTHING */
+	free_stack(*stack);
 
 	return (EXIT_SUCCESS);
 }
