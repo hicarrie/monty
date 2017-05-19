@@ -27,7 +27,7 @@ int pall(stack_t **stack, unsigned int line_number)
  */
 int pint(stack_t **stack, unsigned int line_number)
 {
-	listint_t *next;
+	stack_t *next;
 	int value;
 
 	if (stack == NULL || *stack == NULL)
