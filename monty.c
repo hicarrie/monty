@@ -33,6 +33,11 @@ int main (int argc, char *argv[])
 		/* if token has an argument, strtok again? */
 
 		/* search struct of opcodes */
+		if (opcode == push)
+			/*do this */
+			;
+		else
+			/*search opcode struct */
 
 		/* execute function (with argument if there is one */
 

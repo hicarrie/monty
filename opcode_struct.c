@@ -10,7 +10,6 @@ typedef struct instruction_s
 void (*opcode_struct(char opcode))(stack_t **stack, unsigned int line_number)
 {
 	instruction_s opcode_struct[] = {
-		{'push', push},
 		{'pall', pall},
 		{'pint', pint},
 		{'pop', pop},
@@ -22,6 +21,5 @@ void (*opcode_struct(char opcode))(stack_t **stack, unsigned int line_number)
 		{'div', div},
 		{'mod', mod},
 		{NULL, NULL}
-	};
-		
+	};	
 }
