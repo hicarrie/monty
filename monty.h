@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-extern stack_t stack;
+extern stack_t **stack;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -36,4 +36,20 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-#endif
+/* stack functions */
+int push(stack_t **stack, unsigned int line_number);
+int pop(stack_t **stack, unsigned int line_number);
+int swap(stack_t **stack, unsigned int line_number);
+int nop(stack_t **stack, unsigned int line_number);
+int pall(stack_t **stack, unsigned int line_number);
+int pint(stack_t **stack, unsigned int line_number);
+size_t stack_length(void);
+
+/* calc functions */
+int add(stack_t **stack, unsigned int line_number);
+int sub(stack_t **stack, unsigned int line_number);
+int mul(stack_t **stack, unsigned int line_number);
+int div(stack_t **stack, unsigned int line_number);
+int mod(stack_t **stack, unsigned int line_number);
+
+#endif /* MONTY */
