@@ -15,11 +15,11 @@ int (*opcode_struct(char *opcode))(stack_t **stack, unsigned int line_number)
 		{"pop", pop},
 		{"swap", swap},
 		{"nop", nop},
-		{"add", add},
-		{"sub", sub},
-		{"mul", mul},
-		{"div", div},
-		{"mod", mod},
+		{"add", _add},
+		{"sub", _sub},
+		{"mul", _mul},
+		{"div", _div},
+		{"mod", _mod},
 		{NULL, NULL}
 	};
 

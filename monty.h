@@ -8,8 +8,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <fcntl.h>
-
-#define BUFSIZE 1024
+#include <ctype.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -45,7 +44,7 @@ int (*opcode_struct(char opcode))(stack_t **stack, unsigned int line_number);
 char *nospaces(char *string);
 
 /* stack functions */
-int push(stack_t **stack, unsigned int line_number, int n);
+int push(stack_t **stack, unsigned int line_number, char *n);
 int pop(stack_t **stack, unsigned int line_number);
 int swap(stack_t **stack, unsigned int line_number);
 int nop(stack_t **stack, unsigned int line_number);
@@ -54,10 +53,10 @@ int pint(stack_t **stack, unsigned int line_number);
 size_t stack_length(stack_t **stack);
 
 /* calc functions */
-int add(stack_t **stack, unsigned int line_number);
-int sub(stack_t **stack, unsigned int line_number);
-int mul(stack_t **stack, unsigned int line_number);
-int div(stack_t **stack, unsigned int line_number);
-int mod(stack_t **stack, unsigned int line_number);
+int _add(stack_t **stack, unsigned int line_number);
+int _sub(stack_t **stack, unsigned int line_number);
+int _mul(stack_t **stack, unsigned int line_number);
+int _div(stack_t **stack, unsigned int line_number);
+int _mod(stack_t **stack, unsigned int line_number);
 
 #endif /* MONTY */
