@@ -8,7 +8,7 @@
  */
 int main (int argc, char *argv[])
 {
-	stack_t **stack = NULL;
+	stack_t *stack = NULL;
 	FILE *fp;
 	char *line = NULL;
 	char *opcode;
@@ -42,7 +42,7 @@ int main (int argc, char *argv[])
 		{
 			n = strtok(NULL, " \n\t\r");
 			printf("%s\n", n); /* test */
-			push(stack, line_number, n);
+			push(&stack, line_number, n);
 		}
 		/* else
 		{
