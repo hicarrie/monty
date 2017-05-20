@@ -26,7 +26,7 @@ int _add(stack_t **stack, unsigned int line_number)
 
 	pop(stack, line_number);
 
-	*stack->n = result;
+	(*stack)->n = result;
 
 	return (EXIT_SUCCESS);
 }
@@ -44,7 +44,7 @@ int _sub(stack_t **stack, unsigned int line_number)
 	int b;
 	int result;
 
-	if (stack_length(*stack) < 2)
+	if (stack_length(stack) < 2)
 	{
 		printf("L%d: can't sub, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
@@ -57,7 +57,7 @@ int _sub(stack_t **stack, unsigned int line_number)
 
 	pop(stack, line_number);
 
-	*stack->n = result;
+	(*stack)->n = result;
 
 	return (EXIT_SUCCESS);
 }
@@ -75,7 +75,7 @@ int _mul(stack_t **stack, unsigned int line_number)
 	int b;
 	int result;
 
-	if (stack_length(*stack) < 2)
+	if (stack_length(stack) < 2)
 	{
 		printf("L%d: can't mul, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
@@ -88,7 +88,7 @@ int _mul(stack_t **stack, unsigned int line_number)
 
 	pop(stack, line_number);
 
-	*stack->n = result;
+	(*stack)->n = result;
 
 	return (EXIT_SUCCESS);
 }
@@ -106,7 +106,7 @@ int _div(stack_t **stack, unsigned int line_number)
 	int b;
 	int result;
 
-	if (stack_length(*stack) < 2)
+	if (stack_length(stack) < 2)
 	{
 		printf("L%d: can't div, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
@@ -119,7 +119,7 @@ int _div(stack_t **stack, unsigned int line_number)
 
 	pop(stack, line_number);
 
-	*stack->n = result;
+	(*stack)->n = result;
 
 	return (EXIT_SUCCESS);
 }
@@ -137,7 +137,7 @@ int _mod(stack_t **stack, unsigned int line_number)
 	int b;
 	int result;
 
-	if (stack_length(*stack) < 2)
+	if (stack_length(stack) < 2)
 	{
 		printf("L%d: can't mod, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
@@ -150,7 +150,7 @@ int _mod(stack_t **stack, unsigned int line_number)
 
 	pop(stack, line_number);
 
-	*stack->n = result;
+	(*stack)->n = result;
 
 	return (EXIT_SUCCESS);
 }
