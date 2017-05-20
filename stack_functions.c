@@ -18,6 +18,11 @@ int push(stack_t **stack, unsigned int line_number, char *n)
 		printf("Error: malloc failed\n");
 		return (EXIT_FAILURE);
 	}
+	if (isdigit(n) != 0)
+	{
+		printf("L%d: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 
 	new->n = atoi(n);
 	new->prev = NULL;

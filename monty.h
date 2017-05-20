@@ -40,8 +40,9 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-int opcode_struct(char *opcode);
-char *nospaces(char *string);
+/* int opcode_struct(char *opcode, stack_t **stack, unsigned int line_number);*/
+void (*opcode_struct(char *opcode))(stack_t **stack, unsigned int line_number);
+void free_stack(stack_t **stack);
 
 /* stack functions */
 int push(stack_t **stack, unsigned int line_number, char *n);

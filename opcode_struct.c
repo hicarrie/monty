@@ -7,9 +7,12 @@
  * Return: 0 on success, 1 on failure
  */
 
-int (*opcode_struct(char *opcode))(stack_t **stack, unsigned int line_number)
+void (*opcode_struct(char *opcode))(stack_t **stack, unsigned int line_number)
 {
-	stack_t opcode_struct[] = {
+	int status;
+	int i;
+
+	instruction_t opcodes[] = {
 		{"pall", pall},
 		{"pint", pint},
 		{"pop", pop},
@@ -23,11 +26,12 @@ int (*opcode_struct(char *opcode))(stack_t **stack, unsigned int line_number)
 		{NULL, NULL}
 	};
 
-	for (i = 0; opcode_struct[i] != NULL; i++)
+	status = 0;
+	for (i = 0; opcodes[i].opcode != NULL; i++)
 	{
-		if (strcmp(opcode, opcode_struct[i]) == 0)
+		if ((strcmp(opcode, opcodes[i].opcode)) == 0)
 		{
-			status = (opcode_struct[i].f)(stack, line_number);
+			status = (opcodes[i].f)(stack, line_number);
 			return (status);
 		}
 	}
