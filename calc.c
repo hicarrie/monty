@@ -27,13 +27,11 @@ void _add(stack_t **stack, unsigned int line_number)
 	pop(stack, line_number);
 
 	(*stack)->n = result;
-
-	exit(EXIT_SUCCESS);
 }
 
 /**
- * _sub - subtracts top two elements of stack, removes top element, and replaces
- * the value of the top element with the difference
+ * _sub - subtracts top two elements of stack, removes top element, and
+ * replaces the value of the top element with the difference
  * @stack: pointer to stack
  * @line_number: line number of instruction
  * Return: 0 on success, -1 on failure
@@ -58,8 +56,6 @@ void _sub(stack_t **stack, unsigned int line_number)
 	pop(stack, line_number);
 
 	(*stack)->n = result;
-
-	exit(EXIT_SUCCESS);
 }
 
 /**
@@ -89,8 +85,6 @@ void _mul(stack_t **stack, unsigned int line_number)
 	pop(stack, line_number);
 
 	(*stack)->n = result;
-
-	exit(EXIT_SUCCESS);
 }
 
 /**
@@ -120,12 +114,10 @@ void _div(stack_t **stack, unsigned int line_number)
 	pop(stack, line_number);
 
 	(*stack)->n = result;
-
-	exit(EXIT_SUCCESS);
 }
 
 /**
- * mod - divides top two elements of stack, removes top element, and replaces
+ * _mod - divides top two elements of stack, removes top element, and replaces
  * the value of the top element with the remainder
  * @stack: pointer to stack
  * @line_number: line number of instruction
@@ -151,6 +143,4 @@ void _mod(stack_t **stack, unsigned int line_number)
 	pop(stack, line_number);
 
 	(*stack)->n = result;
-
-	exit(EXIT_SUCCESS);
 }

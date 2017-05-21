@@ -42,6 +42,7 @@ typedef struct instruction_s
 
 int opcode_struct(char *opcode, stack_t **stack, unsigned int line_number);
 void free_stack(stack_t **stack);
+void free_all(stack_t *stack, char *line, FILE *fp);
 
 /* stack functions */
 void push(stack_t **stack, unsigned int line_number, char *n);
