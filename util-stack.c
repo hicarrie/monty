@@ -6,7 +6,7 @@
  * @line_number: line number of instruction
  * Return: 0 on success, -1 on failure
  */
-int push(stack_t **stack, unsigned int line_number)
+int push(stack_t **stack, unsigned int line_number, int n)
 {
 	stack_t *new;
 
