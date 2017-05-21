@@ -19,7 +19,7 @@ void push(stack_t **stack, unsigned int line_number, char *n)
 	}
 
 	for (i = 0; n[i] != '\0'; i++)
-	{	
+	{
 		if (isdigit(n[i]) == 0)
 		{
 			printf("L%d: usage: push integer\n", line_number);
@@ -96,8 +96,8 @@ void swap(stack_t **stack, unsigned int line_number)
  * @line_number: line number of instruction
  * Return: void
  */
-void nop(stack_t __attribute__((unused))**stack, \
-	unsigned int __attribute__((unused))line_number)
+void nop(stack_t **stack, unsigned int line_number)
 {
-	return;
+	(void)stack;
+	(void)line_number;
 }
