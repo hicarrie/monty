@@ -20,6 +20,8 @@ void push(stack_t **stack, unsigned int line_number, char *n)
 
 	for (i = 0; n[i] != '\0'; i++)
 	{
+		if (n[0] == '-' && i == 0)
+			continue;
 		if (isdigit(n[i]) == 0)
 		{
 			printf("L%d: usage: push integer\n", line_number);
