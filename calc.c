@@ -108,7 +108,11 @@ void _div(stack_t **stack, unsigned int line_number)
 
 	a = (*stack)->n;
 	b = (*stack)->next->n;
-
+	if (a == 0)
+	{
+		printf("L%d: division by zero\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 	result = b / a;
 
 	pop(stack, line_number);
