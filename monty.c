@@ -12,6 +12,8 @@ int main (int argc, char *argv[])
 	char *buffer = NULL;
 	unsigned int line_number;
 	int n;
+	int fd;
+	ssize_t read_return;
 
 	if (argc != 2)
 	{
@@ -19,43 +21,44 @@ int main (int argc, char *argv[])
 		return (EXIT_FAILURE);
 	}
 
-	/* open file */
-
-	/* read file into buffer */
-
-	/* while buffer is not empty */
+	fd = open(argv[1], O_RDONLY);
+	if (fd == -1)
+		return (EXIT_FAILURE);
+	buffer = malloc(sizeof(char) * BUFSIZE);
+	if (buffer == NULL)
+		return (EXIT_FAILURE);
+	read_return = read(fd, buffer, BUFSIZE);
+	if (read_return == -1)
+		return (EXIT_FAILURE);
+	buffer = nospaces(buffer);
 	line_number = 1;
 	while (buffer != '\0')
 	{
-		/* strtok buffer */
+		opcode = strtok(buffer, "\n\t\r ");
+		if (opcode == push)
+		{
+			n = strtok(buffer, "\n\t\r ");
+			if (isdigit(n) == 0)
+			{
+				printf("L%d: usage: push integer\n", line_number);
+				return (EXIT_FAILURE);
+			}
 
-		/* remove extra spaces */
-
-		/* if token has an argument, strtok again? */
-
-		/* search struct of opcodes (opcode will be defined from strtok) */
+		}
 		if (opcode == push)
 		{
 			push(*stack, line_number, n);
 		}
-		/*do push function, has extra argument in it */
 		else if
-			/*search opcode struct, match opcode to function pointers */
 			opcode_struct(opcode);
 		else
 		{
 			printf("L%d: unknown instruction %s\n", line_number, opcode);
 			return (EXIT_FAILURE);
 		}
-		/* execute function (with argument if there is one */
-
-		/* increment line_number count */
 		line_number++;
-
-		/* end loop */
 	}
-
-	/* FREE EVERYTHING */
+	free_stack(*stack);
 
 	return (EXIT_SUCCESS);
 }
