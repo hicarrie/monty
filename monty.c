@@ -59,8 +59,3 @@ int main (int argc, char *argv[])
 
 	return (EXIT_SUCCESS);
 }
-
-
-./monty filename
-
-argv[0] 
