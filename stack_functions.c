@@ -31,15 +31,8 @@ void push(stack_t **stack, unsigned int line_number, char *n)
 	}
 
 	new->n = atoi(n);
-	printf("after new->n\n");
-	printf("new->n: %d\n", new->n);
-
 	new->prev = NULL;
-	printf("after new->prev\n");
-
 	new->next = NULL;
-	printf("after new->next\n");
-
 	if (*stack != NULL)
 	{
 		new->next = *stack;
