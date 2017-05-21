@@ -13,7 +13,6 @@ int main(int argc, char *argv[])
 	char *line = NULL;
 	char *opcode;
 	char *n;
-	int opcode_ret;
 	unsigned int line_number;
 	size_t len = 0;
 	ssize_t read;
@@ -30,7 +29,6 @@ int main(int argc, char *argv[])
 		printf("Error: Can't open file %s\n", argv[1]);
 		return (EXIT_FAILURE);
 	}
-
 	line_number = 0;
 	while ((read = getline(&line, &len, fp)) != -1)
 	{
@@ -38,22 +36,13 @@ int main(int argc, char *argv[])
 		opcode = strtok(line, "\n\t\r ");
 		if (opcode == NULL)
 			continue;
-
 		if (strcmp(opcode, "push") == 0)
 		{
 			n = strtok(NULL, "\n\t\r ");
 			push(&stack, line_number, n);
 		}
 		else
-		{
-			opcode_ret = opcode_struct(opcode, &stack, line_number);
-			if (opcode_ret == 1)
-			{
-				printf("L%d: unknown instruction %s\n",
-				       line_number, opcode);
-				return (EXIT_FAILURE);
-			}
-		}
+			opcode_struct(opcode, &stack, line_number);
 	}
 	free_all(stack, line, fp);
 	return (EXIT_SUCCESS);

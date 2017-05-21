@@ -10,6 +10,7 @@
 void push(stack_t **stack, unsigned int line_number, char *n)
 {
 	stack_t *new = NULL;
+	int i;
 
 	if (n == NULL)
 	{
@@ -17,12 +18,14 @@ void push(stack_t **stack, unsigned int line_number, char *n)
 		exit(EXIT_FAILURE);
 	}
 
-	/* if (isdigit(n) != 0)
-	{
-		printf("L%d: usage: push integer\n", line_number);
-		exit(EXIT_FAILURE);
-	} */
-
+	for (i = 0; n[i] != '\0'; i++)
+	{	
+		if (isdigit(n[i]) == 0)
+		{
+			printf("L%d: usage: push integer\n", line_number);
+			exit(EXIT_FAILURE);
+		}
+	}
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
