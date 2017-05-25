@@ -4,9 +4,10 @@
  * push - add new item to top of stack
  * @stack: pointer to stack
  * @line_number: line number of instruction
+ * @n: value of new item on stack
  * Return: 0 on success, -1 on failure
  */
-int push(stack_t **stack, unsigned int line_number, int n)
+int push(stack_t **stack, unsigned int line_number, char *n)
 {
 	stack_t *new;
 
@@ -18,7 +19,7 @@ int push(stack_t **stack, unsigned int line_number, int n)
 		return (EXIT_FAILURE);
 	}
 
-	new->n = n;
+	new->n = atoi(n);
 	new->prev = NULL;
 	new->next = *stack;
 	*stack = new;
@@ -34,7 +35,7 @@ int push(stack_t **stack, unsigned int line_number, int n)
  */
 int pop(stack_t **stack, unsigned int line_number)
 {
-        stack_t *next;
+	stack_t *next;
 
 	if (stack == NULL || *stack == NULL)
 	{
@@ -57,12 +58,22 @@ int pop(stack_t **stack, unsigned int line_number)
  */
 int swap(stack_t **stack, unsigned int line_number)
 {
-	/* if length of stack is less than 2 */
-	if (stack_len(stack) < 2)
+	int temp_a;
+	int temp_b;
+
+	if (stack_length(*stack) < 2)
 	{
 		printf("L%d: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
+
+	temp_a = (*stack)->n;
+	temp_b = (*stack)->next->n;
+
+	(*stack)->n = temp_b;
+	(*stack)->next->n = temp_a;
+
+	return (EXIT_SUCCESS);
 }
 
 /**
@@ -71,7 +82,8 @@ int swap(stack_t **stack, unsigned int line_number)
  * @line_number: line number of instruction
  * Return: 0 on success, -1 on failure
  */
-int nop(stack_t **stack, unsigned int line_number)
+int nop(stack_t __attribute__((unused))**stack,
+	unsigned int __attribute__((unused))line_number)
 {
 	return (EXIT_SUCCESS);
 }

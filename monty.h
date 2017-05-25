@@ -7,9 +7,9 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include <string.h>
+#include <fcntl.h>
 
 #define BUFSIZE 1024
-extern stack_t **stack;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -41,6 +41,9 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+int (*opcode_struct(char opcode))(stack_t **stack, unsigned int line_number);
+char *nospaces(char *string);
+
 /* stack functions */
 int push(stack_t **stack, unsigned int line_number, int n);
 int pop(stack_t **stack, unsigned int line_number);
@@ -48,7 +51,7 @@ int swap(stack_t **stack, unsigned int line_number);
 int nop(stack_t **stack, unsigned int line_number);
 int pall(stack_t **stack, unsigned int line_number);
 int pint(stack_t **stack, unsigned int line_number);
-size_t stack_length(void);
+size_t stack_length(stack_t **stack);
 
 /* calc functions */
 int add(stack_t **stack, unsigned int line_number);
