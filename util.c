@@ -48,12 +48,12 @@ int pint(stack_t **stack, unsigned int line_number)
  * stack_length - returns length of stack
  * Return: length of stack
  */
-size_t stack_length(void)
+size_t stack_length(stack_t **stack)
 {
-        stack_t *current;
+	stack_t *current;
 	unsigned int n; /* counter for number of elements */
 
-	current = stack;
+	current = *stack;
 	n = 0;
 	while (current != NULL)
 	{
@@ -62,4 +62,21 @@ size_t stack_length(void)
 	}
 
 	return (n);
+}
+
+/**
+ * free_stack - frees a stack_t stack
+ * @stack: stack to be freed
+ * Return: void
+ */
+void free_stack(stack_t **stack)
+{
+	stack_t *current;
+
+	while (stack != NULL)
+	{
+		current = *stack;
+		*stack = (*stack)->next;
+		free(current);
+	}
 }

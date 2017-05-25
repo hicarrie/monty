@@ -9,14 +9,26 @@
  */
 int add(stack_t **stack, unsigned int line_number)
 {
-	/* if length of stack is less than 2 */
-	if (stack_len(stack) < 2)
+	int a;
+	int b;
+	int result;
+
+	if (stack_length(*stack) < 2)
 	{
 		printf("L%d: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	return (0);
+	a = (*stack)->n;
+	b = (*stack)->next->n;
+
+	result = a + b;
+
+	pop(stack, line_number);
+
+	*stack->n = result;
+
+	return (EXIT_SUCCESS);
 }
 
 /**
@@ -28,33 +40,57 @@ int add(stack_t **stack, unsigned int line_number)
  */
 int sub(stack_t **stack, unsigned int line_number)
 {
-	/* if length of stack is less than 2 */
-	if (stack_len(stack) < 2)
+	int a;
+	int b;
+	int result;
+
+	if (stack_length(*stack) < 2)
 	{
 		printf("L%d: can't sub, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	return (0);
+	a = (*stack)->n;
+	b = (*stack)->next->n;
+
+	result = a - b;
+
+	pop(stack, line_number);
+
+	*stack->n = result;
+
+	return (EXIT_SUCCESS);
 }
 
 /**
- * mul - multiplies top two elements of stack, removes top element, and replaces
- * the value of the top element with the product
+ * mul - multiplies top two elements of stack, removes top element, and
+ * replaces the value of the top element with the product
  * @stack: pointer to stack
  * @line_number: line number of instruction
  * Return: 0 on success, -1 on failure
  */
 int mul(stack_t **stack, unsigned int line_number)
 {
-	/* if length of stack is less than 2 */
-	if (stack_len(stack) < 2)
+	int a;
+	int b;
+	int result;
+
+	if (stack_length(*stack) < 2)
 	{
 		printf("L%d: can't mul, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	return (0);
+	a = (*stack)->n;
+	b = (*stack)->next->n;
+
+	result = a * b;
+
+	pop(stack, line_number);
+
+	*stack->n = result;
+
+	return (EXIT_SUCCESS);
 }
 
 /**
@@ -66,14 +102,26 @@ int mul(stack_t **stack, unsigned int line_number)
  */
 int div(stack_t **stack, unsigned int line_number)
 {
-	/* if length of stack is less than 2 */
-	if (stack_len(stack) < 2)
+	int a;
+	int b;
+	int result;
+
+	if (stack_length(*stack) < 2)
 	{
 		printf("L%d: can't div, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	return (0);
+	a = (*stack)->n;
+	b = (*stack)->next->n;
+
+	result = a / b;
+
+	pop(stack, line_number);
+
+	*stack->n = result;
+
+	return (EXIT_SUCCESS);
 }
 
 /**
@@ -85,12 +133,24 @@ int div(stack_t **stack, unsigned int line_number)
  */
 int mod(stack_t **stack, unsigned int line_number)
 {
-	/* if length of stack is less than 2 */
-	if (stack_len(stack) < 2)
+	int a;
+	int b;
+	int result;
+
+	if (stack_length(*stack) < 2)
 	{
 		printf("L%d: can't mod, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	return (0);
+	a = (*stack)->n;
+	b = (*stack)->next->n;
+
+	result = a % b;
+
+	pop(stack, line_number);
+
+	*stack->n = result;
+
+	return (EXIT_SUCCESS);
 }

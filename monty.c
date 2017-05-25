@@ -9,11 +9,14 @@
 int main (int argc, char *argv[])
 {
 	stack_t **stack = NULL;
-	char *buffer = NULL;
+	FILE *fp;
+	char *line = NULL;
+	char *opcode;
 	unsigned int line_number;
-	int n;
-	int fd;
-	ssize_t read_return;
+	size_t len = 0;
+	ssize_t read;
+	char *n;
+	int opcode_ret;
 
 	if (argc != 2)
 	{
@@ -21,44 +24,44 @@ int main (int argc, char *argv[])
 		return (EXIT_FAILURE);
 	}
 
-	fd = open(argv[1], O_RDONLY);
-	if (fd == -1)
-		return (EXIT_FAILURE);
-	buffer = malloc(sizeof(char) * BUFSIZE);
-	if (buffer == NULL)
-		return (EXIT_FAILURE);
-	read_return = read(fd, buffer, BUFSIZE);
-	if (read_return == -1)
-		return (EXIT_FAILURE);
-	buffer = nospaces(buffer);
+	fp = fopen(argv[1], "r");
+	if (fp == NULL)
+		exit (EXIT_FAILURE);
+
 	line_number = 1;
-	while (buffer != '\0')
+	while ((read = getline(&line, &len, fp)) != -1)
 	{
-		opcode = strtok(buffer, "\n\t\r ");
-		if (opcode == push)
+		opcode = strtok(line, " \n\t\r");
+		while (opcode != NULL)
 		{
-			n = strtok(buffer, "\n\t\r ");
+			opcode = strtok(NULL, " \n\t\r");
+			printf("%s\n", opcode);
+			}
+		if (strcmp(opcode, "push") == 0)
+		{
+			n = strtok(NULL, " \n\t\r");
 			if (isdigit(n) == 0)
 			{
-				printf("L%d: usage: push integer\n", line_number);
+				printf("L%d: usage: push integer\n",
+				       line_number);
 				return (EXIT_FAILURE);
 			}
-
+			push(stack, line_number, n);
 		}
-		if (opcode == push)
-		{
-			push(*stack, line_number, n);
-		}
-		else if
-			opcode_struct(opcode);
 		else
 		{
-			printf("L%d: unknown instruction %s\n", line_number, opcode);
-			return (EXIT_FAILURE);
+			opcode_ret = opcode_struct(opcode, stack, line_number);
+			if (opcode_ret == 1)
+			{
+				printf("L%d: unknown instruction %s\n",
+				       line_number, opcode);
+				return (EXIT_FAILURE);
+			}
 		}
 		line_number++;
 	}
-	free_stack(*stack);
-
+	free_stack(stack);
+	free(line);
+	fclose(fp);
 	return (EXIT_SUCCESS);
 }
