@@ -7,26 +7,42 @@
  * @n: value of new item on stack
  * Return: 0 on success, -1 on failure
  */
-void push(stack_t **stack, unsigned int line_number, char *n)
+void push(stack_t **stack, unsigned int __attribute__((unused))line_number, char *n)
 {
-	stack_t *new;
+	stack_t *new = NULL;
 
 	new = malloc(sizeof(stack_t));
-
 	if (new == NULL)
 	{
 		printf("Error: malloc failed\n");
 	        exit (EXIT_FAILURE);
 	}
-	if (isdigit(n) != 0)
+
+	/* if (isdigit(n) != 0)
 	{
 		printf("L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
-	}
+		} */
+
+	printf("atoi: %d\n", atoi(n));
 
 	new->n = atoi(n);
+	printf("after new->n\n");
+	printf("new->n: %d\n", new->n);
+
 	new->prev = NULL;
-	new->next = *stack;
+	printf("after new->prev\n");
+
+	new->next = NULL;
+	printf("after new->next\n");
+
+	/* if (*stack != NULL)
+	{
+		new->next = *stack;
+		(*stack)->prev = new;
+	}
+	else */
+
 	*stack = new;
 
         exit(EXIT_SUCCESS);
