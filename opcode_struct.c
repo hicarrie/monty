@@ -27,7 +27,10 @@ int opcode_struct(char *opcode, stack_t **stack, unsigned int line_number)
 	for (i = 0; opcodes[i].opcode != NULL; i++)
 	{
 		if (strcmp(opcode, opcodes[i].opcode) == 0)
+		{
 		        (opcodes[i].f)(stack, line_number);
+			return (EXIT_SUCCESS);
+		}
 	}
 
 	return (EXIT_FAILURE);
