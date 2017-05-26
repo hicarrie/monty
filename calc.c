@@ -7,7 +7,7 @@
  * @line_number: line number of instruction
  * Return: 0 on success, -1 on failure
  */
-int _add(stack_t **stack, unsigned int line_number)
+void _add(stack_t **stack, unsigned int line_number)
 {
 	int a;
 	int b;
@@ -28,7 +28,7 @@ int _add(stack_t **stack, unsigned int line_number)
 
 	(*stack)->n = result;
 
-	return (EXIT_SUCCESS);
+	exit(EXIT_SUCCESS);
 }
 
 /**
@@ -38,7 +38,7 @@ int _add(stack_t **stack, unsigned int line_number)
  * @line_number: line number of instruction
  * Return: 0 on success, -1 on failure
  */
-int _sub(stack_t **stack, unsigned int line_number)
+void _sub(stack_t **stack, unsigned int line_number)
 {
 	int a;
 	int b;
@@ -59,7 +59,7 @@ int _sub(stack_t **stack, unsigned int line_number)
 
 	(*stack)->n = result;
 
-	return (EXIT_SUCCESS);
+	exit(EXIT_SUCCESS);
 }
 
 /**
@@ -69,7 +69,7 @@ int _sub(stack_t **stack, unsigned int line_number)
  * @line_number: line number of instruction
  * Return: 0 on success, -1 on failure
  */
-int _mul(stack_t **stack, unsigned int line_number)
+void _mul(stack_t **stack, unsigned int line_number)
 {
 	int a;
 	int b;
@@ -90,7 +90,7 @@ int _mul(stack_t **stack, unsigned int line_number)
 
 	(*stack)->n = result;
 
-	return (EXIT_SUCCESS);
+	exit(EXIT_SUCCESS);
 }
 
 /**
@@ -100,7 +100,7 @@ int _mul(stack_t **stack, unsigned int line_number)
  * @line_number: line number of instruction
  * Return: 0 on success, -1 on failure
  */
-int _div(stack_t **stack, unsigned int line_number)
+void _div(stack_t **stack, unsigned int line_number)
 {
 	int a;
 	int b;
@@ -121,7 +121,7 @@ int _div(stack_t **stack, unsigned int line_number)
 
 	(*stack)->n = result;
 
-	return (EXIT_SUCCESS);
+	exit(EXIT_SUCCESS);
 }
 
 /**
@@ -131,7 +131,7 @@ int _div(stack_t **stack, unsigned int line_number)
  * @line_number: line number of instruction
  * Return: 0 on success, -1 on failure
  */
-int _mod(stack_t **stack, unsigned int line_number)
+void _mod(stack_t **stack, unsigned int line_number)
 {
 	int a;
 	int b;
@@ -152,5 +152,5 @@ int _mod(stack_t **stack, unsigned int line_number)
 
 	(*stack)->n = result;
 
-	return (EXIT_SUCCESS);
+	exit(EXIT_SUCCESS);
 }

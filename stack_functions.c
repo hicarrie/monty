@@ -7,7 +7,7 @@
  * @n: value of new item on stack
  * Return: 0 on success, -1 on failure
  */
-int push(stack_t **stack, unsigned int line_number, char *n)
+void push(stack_t **stack, unsigned int line_number, char *n)
 {
 	stack_t *new;
 
@@ -16,7 +16,7 @@ int push(stack_t **stack, unsigned int line_number, char *n)
 	if (new == NULL)
 	{
 		printf("Error: malloc failed\n");
-		return (EXIT_FAILURE);
+	        exit (EXIT_FAILURE);
 	}
 	if (isdigit(n) != 0)
 	{
@@ -29,7 +29,7 @@ int push(stack_t **stack, unsigned int line_number, char *n)
 	new->next = *stack;
 	*stack = new;
 
-	return (EXIT_SUCCESS);
+        exit(EXIT_SUCCESS);
 }
 
 /**
@@ -38,21 +38,21 @@ int push(stack_t **stack, unsigned int line_number, char *n)
  * @line_number: line number of instruction
  * Return: 0 on success, -1 on failure
  */
-int pop(stack_t **stack, unsigned int line_number)
+void pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *next;
 
 	if (stack == NULL || *stack == NULL)
 	{
 		printf("L%d: can't pop an empty stack\n", line_number);
-		return (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 
 	next = (*stack)->next; /* save next node's address */
 	free(*stack);
 	*stack = next; /* reassign next node to head */
 
-	return (EXIT_SUCCESS);
+	exit(EXIT_SUCCESS);
 }
 
 /**
@@ -61,12 +61,12 @@ int pop(stack_t **stack, unsigned int line_number)
  * @line_number: line number of instruction
  * Return: 0 on success, -1 on failure
  */
-int swap(stack_t **stack, unsigned int line_number)
+void swap(stack_t **stack, unsigned int line_number)
 {
 	int temp_a;
 	int temp_b;
 
-	if (stack_length(*stack) < 2)
+	if (stack_length(stack) < 2)
 	{
 		printf("L%d: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
@@ -78,7 +78,7 @@ int swap(stack_t **stack, unsigned int line_number)
 	(*stack)->n = temp_b;
 	(*stack)->next->n = temp_a;
 
-	return (EXIT_SUCCESS);
+        exit(EXIT_SUCCESS);
 }
 
 /**
@@ -87,8 +87,8 @@ int swap(stack_t **stack, unsigned int line_number)
  * @line_number: line number of instruction
  * Return: 0 on success, -1 on failure
  */
-int nop(stack_t __attribute__((unused))**stack,
+void nop(stack_t __attribute__((unused))**stack,
 	unsigned int __attribute__((unused))line_number)
 {
-	return (EXIT_SUCCESS);
+	exit(EXIT_SUCCESS);
 }

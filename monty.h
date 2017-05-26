@@ -40,24 +40,23 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-/* int opcode_struct(char *opcode, stack_t **stack, unsigned int line_number);*/
-void (*opcode_struct(char *opcode))(stack_t **stack, unsigned int line_number);
+int opcode_struct(char *opcode, stack_t **stack, unsigned int line_number);
 void free_stack(stack_t **stack);
 
 /* stack functions */
-int push(stack_t **stack, unsigned int line_number, char *n);
-int pop(stack_t **stack, unsigned int line_number);
-int swap(stack_t **stack, unsigned int line_number);
-int nop(stack_t **stack, unsigned int line_number);
-int pall(stack_t **stack, unsigned int line_number);
+void push(stack_t **stack, unsigned int line_number, char *n);
 int pint(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
 size_t stack_length(stack_t **stack);
 
 /* calc functions */
-int _add(stack_t **stack, unsigned int line_number);
-int _sub(stack_t **stack, unsigned int line_number);
-int _mul(stack_t **stack, unsigned int line_number);
-int _div(stack_t **stack, unsigned int line_number);
-int _mod(stack_t **stack, unsigned int line_number);
+void _add(stack_t **stack, unsigned int line_number);
+void _sub(stack_t **stack, unsigned int line_number);
+void _mul(stack_t **stack, unsigned int line_number);
+void _div(stack_t **stack, unsigned int line_number);
+void _mod(stack_t **stack, unsigned int line_number);
 
 #endif /* MONTY */

@@ -50,8 +50,7 @@ int main (int argc, char *argv[])
 		}
 		else
 		{
-			opcode_ret = (opcode_struct(opcode))(stack, line_number);
-/*			opcode_ret = opcode_struct(opcode);*/
+			opcode_ret = opcode_struct(opcode, stack, line_number);
 			if (opcode_ret == 1)
 			{
 				printf("L%d: unknown instruction %s\n",

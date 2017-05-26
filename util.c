@@ -6,7 +6,7 @@
  * @line_number: line number of instruction
  * Return: 0 on success, -1 on failure
  */
-int pall(stack_t **stack, unsigned int line_number)
+void pall(stack_t **stack, unsigned int __attribute__((unused))line_number)
 {
 	stack_t *current = *stack;
 
@@ -16,7 +16,7 @@ int pall(stack_t **stack, unsigned int line_number)
 		current = current->next;
 	}
 
-	return (EXIT_SUCCESS);
+	exit(EXIT_SUCCESS);
 }
 
 /**
@@ -33,7 +33,7 @@ int pint(stack_t **stack, unsigned int line_number)
 	if (stack == NULL || *stack == NULL)
 	{
 		printf("L%d: can't pint, stack empty\n", line_number);
-		return (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 
 	value = (*stack)->n; /* head node's data */
