@@ -22,7 +22,7 @@ void push(stack_t **stack, unsigned int __attribute__((unused))line_number, char
 	{
 		printf("L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
-		} */
+	} */
 
 	printf("atoi: %d\n", atoi(n));
 
@@ -36,14 +36,14 @@ void push(stack_t **stack, unsigned int __attribute__((unused))line_number, char
 	new->next = NULL;
 	printf("after new->next\n");
 
-	/* if (*stack != NULL)
+	if (*stack != NULL)
 	{
 		new->next = *stack;
 		(*stack)->prev = new;
 	}
-	else */
-
+	else
 	*stack = new;
+	printf("CAN IT BE TRUE?!");
 
         exit(EXIT_SUCCESS);
 }
