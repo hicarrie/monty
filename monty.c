@@ -16,7 +16,7 @@ int main (int argc, char *argv[])
 	size_t len = 0;
 	ssize_t read;
 	char *n;
-	/*   int opcode_ret; */
+        int opcode_ret;
 
 	if (argc != 2)
 	{
@@ -44,18 +44,18 @@ int main (int argc, char *argv[])
 			printf("%s\n", n); /* test */
 			push(&stack, line_number, n);
 		}
-		/* else
+		else
 		{
-			opcode_ret = opcode_struct(opcode, stack, line_number);
+			opcode_ret = opcode_struct(opcode, &stack, line_number);
 			if (opcode_ret == 1)
 			{
 				printf("L%d: unknown instruction %s\n",
 				       line_number, opcode);
 				return (EXIT_FAILURE);
 			}
-			} */
+		}
 	}
-	/* free_stack(stack); */
+	free_stack(&stack);
 	free(line);
 	fclose(fp);
 	return (EXIT_SUCCESS);

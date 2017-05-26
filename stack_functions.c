@@ -24,8 +24,6 @@ void push(stack_t **stack, unsigned int __attribute__((unused))line_number, char
 		exit(EXIT_FAILURE);
 	} */
 
-	printf("atoi: %d\n", atoi(n));
-
 	new->n = atoi(n);
 	printf("after new->n\n");
 	printf("new->n: %d\n", new->n);
@@ -41,11 +39,10 @@ void push(stack_t **stack, unsigned int __attribute__((unused))line_number, char
 		new->next = *stack;
 		(*stack)->prev = new;
 	}
-	else
-	*stack = new;
-	printf("CAN IT BE TRUE?!");
 
-        exit(EXIT_SUCCESS);
+	*stack = new;
+
+	printf("CAN IT BE TRUE?!\n");
 }
 
 /**
@@ -67,8 +64,6 @@ void pop(stack_t **stack, unsigned int line_number)
 	next = (*stack)->next; /* save next node's address */
 	free(*stack);
 	*stack = next; /* reassign next node to head */
-
-	exit(EXIT_SUCCESS);
 }
 
 /**
@@ -93,8 +88,6 @@ void swap(stack_t **stack, unsigned int line_number)
 
 	(*stack)->n = temp_b;
 	(*stack)->next->n = temp_a;
-
-        exit(EXIT_SUCCESS);
 }
 
 /**
@@ -106,5 +99,5 @@ void swap(stack_t **stack, unsigned int line_number)
 void nop(stack_t __attribute__((unused))**stack,
 	unsigned int __attribute__((unused))line_number)
 {
-	exit(EXIT_SUCCESS);
+        return;
 }
