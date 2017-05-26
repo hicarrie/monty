@@ -10,6 +10,9 @@ void pall(stack_t **stack, unsigned int __attribute__((unused))line_number)
 {
 	stack_t *current = *stack;
 
+	if (stack == NULL || *stack == NULL)
+		return;
+
 	while (current != NULL)
 	{
 		printf("%d\n", current->n);
@@ -44,6 +47,7 @@ int pint(stack_t **stack, unsigned int line_number)
 
 /**
  * stack_length - returns length of stack
+ * @stack: pointer to head of stack
  * Return: length of stack
  */
 size_t stack_length(stack_t **stack)
@@ -71,10 +75,24 @@ void free_stack(stack_t **stack)
 {
 	stack_t *current;
 
-	while (stack != NULL)
+	while ((*stack)->next != NULL)
 	{
 		current = *stack;
 		*stack = (*stack)->next;
 		free(current);
 	}
+}
+
+/**
+ * free_all - frees line and fp
+ * @stack: stack to free
+ * @line: line to free from getline
+ * @fp: file pointer to free
+ * Return: void
+ */
+void free_all(stack_t *stack, char *line, FILE *fp)
+{
+	free_stack(&stack);
+	free(line);
+	fclose(fp);
 }

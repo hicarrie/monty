@@ -5,17 +5,16 @@
  * @stack: pointer to stack
  * @line_number: line number of instruction
  * @n: value of new item on stack
- * Return: 0 on success, -1 on failure
+ * Return: void, -1 on failure
  */
-void push(stack_t **stack, unsigned int __attribute__((unused))line_number, char *n)
+void push(stack_t **stack, unsigned int line_number, char *n)
 {
 	stack_t *new = NULL;
 
-	new = malloc(sizeof(stack_t));
-	if (new == NULL)
+	if (n == NULL)
 	{
-		printf("Error: malloc failed\n");
-	        exit (EXIT_FAILURE);
+		printf("L%d: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
 	}
 
 	/* if (isdigit(n) != 0)
@@ -23,6 +22,13 @@ void push(stack_t **stack, unsigned int __attribute__((unused))line_number, char
 		printf("L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	} */
+
+	new = malloc(sizeof(stack_t));
+	if (new == NULL)
+	{
+		printf("Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
 
 	new->n = atoi(n);
 	printf("after new->n\n");
@@ -41,15 +47,13 @@ void push(stack_t **stack, unsigned int __attribute__((unused))line_number, char
 	}
 
 	*stack = new;
-
-	printf("CAN IT BE TRUE?!\n");
 }
 
 /**
  * pop - remove item at the top of stack
  * @stack: pointer to stack
  * @line_number: line number of instruction
- * Return: 0 on success, -1 on failure
+ * Return: void, 1 on failure
  */
 void pop(stack_t **stack, unsigned int line_number)
 {
@@ -70,7 +74,7 @@ void pop(stack_t **stack, unsigned int line_number)
  * swap - swaps the value of the top two elements on the stack
  * @stack: pointer to stack
  * @line_number: line number of instruction
- * Return: 0 on success, -1 on failure
+ * Return: void, 1 on failure
  */
 void swap(stack_t **stack, unsigned int line_number)
 {
@@ -94,10 +98,10 @@ void swap(stack_t **stack, unsigned int line_number)
  * nop - does nothing
  * @stack: pointer to stack
  * @line_number: line number of instruction
- * Return: 0 on success, -1 on failure
+ * Return: void
  */
-void nop(stack_t __attribute__((unused))**stack,
+void nop(stack_t __attribute__((unused))**stack, \
 	unsigned int __attribute__((unused))line_number)
 {
-        return;
+	return;
 }

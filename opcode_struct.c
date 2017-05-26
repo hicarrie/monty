@@ -28,7 +28,7 @@ int opcode_struct(char *opcode, stack_t **stack, unsigned int line_number)
 	{
 		if (strcmp(opcode, opcodes[i].opcode) == 0)
 		{
-		        (opcodes[i].f)(stack, line_number);
+			(opcodes[i].f)(stack, line_number);
 			return (EXIT_SUCCESS);
 		}
 	}
