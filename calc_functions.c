@@ -5,7 +5,7 @@
  * the value of the top element with the sum
  * @stack: pointer to stack
  * @line_number: line number of instruction
- * Return: 0 on success, -1 on failure
+ * Return: void, exit with -1 on failure
  */
 void _add(stack_t **stack, unsigned int line_number)
 {
@@ -34,7 +34,7 @@ void _add(stack_t **stack, unsigned int line_number)
  * replaces the value of the top element with the difference
  * @stack: pointer to stack
  * @line_number: line number of instruction
- * Return: 0 on success, -1 on failure
+ * Return: void, exit with -1 on failure
  */
 void _sub(stack_t **stack, unsigned int line_number)
 {
@@ -63,7 +63,7 @@ void _sub(stack_t **stack, unsigned int line_number)
  * replaces the value of the top element with the product
  * @stack: pointer to stack
  * @line_number: line number of instruction
- * Return: 0 on success, -1 on failure
+ * Return: void, exit with -1 on failure
  */
 void _mul(stack_t **stack, unsigned int line_number)
 {
@@ -92,7 +92,7 @@ void _mul(stack_t **stack, unsigned int line_number)
  * the value of the top element with the quotient
  * @stack: pointer to stack
  * @line_number: line number of instruction
- * Return: 0 on success, -1 on failure
+ * Return: void, exit with -1 on failure
  */
 void _div(stack_t **stack, unsigned int line_number)
 {
@@ -125,7 +125,7 @@ void _div(stack_t **stack, unsigned int line_number)
  * the value of the top element with the remainder
  * @stack: pointer to stack
  * @line_number: line number of instruction
- * Return: 0 on success, -1 on failure
+ * Return: void, exit with -1 on failure
  */
 void _mod(stack_t **stack, unsigned int line_number)
 {

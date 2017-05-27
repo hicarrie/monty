@@ -1,3 +1,5 @@
+#include "monty.h"
+
 /**
  * pall - prints the value of all items on the stack
  * @stack: pointer to stack
@@ -22,7 +24,7 @@ void pall(stack_t **stack, unsigned int __attribute__((unused))line_number)
  * pint - prints value at the top of the stack, plus new line
  * @stack: pointer to stack
  * @line_number: line number of instruction
- * Return: value of the top element of the stack
+ * Return: void
  */
 void pint(stack_t **stack, unsigned int line_number)
 {
@@ -42,7 +44,7 @@ void pint(stack_t **stack, unsigned int line_number)
  * pchar - prints the char at the top of the stack
  * @stack: pointer to stack
  * @line_number: line number of instruction
- * Return: value of the top element of the stack
+ * Return: void
  */
 void pchar(stack_t **stack, unsigned int line_number)
 {
@@ -65,10 +67,10 @@ void pchar(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * pstr - prints the string starting at the top of the stack
+ * pstr - prints the string starting from the top of the stack
  * @stack: pointer to stack
  * @line_number: line number of instruction
- * Return: value of the top element of the stack
+ * Return: void
  */
 void pstr(stack_t **stack, unsigned int line_number)
 {
@@ -86,6 +88,5 @@ void pstr(stack_t **stack, unsigned int line_number)
 		else
 			break;
 	}
-
 	putchar('\n');
 }
