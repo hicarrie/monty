@@ -5,7 +5,7 @@
  * @stack: pointer to stack
  * @line_number: line number of instruction
  * @n: value of new item on stack
- * Return: void, -1 on failure
+ * Return: void, exit with -1 on failure
  */
 void push(stack_t **stack, unsigned int line_number, char *n)
 {
@@ -28,6 +28,7 @@ void push(stack_t **stack, unsigned int line_number, char *n)
 			exit(EXIT_FAILURE);
 		}
 	}
+
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
@@ -51,7 +52,7 @@ void push(stack_t **stack, unsigned int line_number, char *n)
  * pop - remove item at the top of stack
  * @stack: pointer to stack
  * @line_number: line number of instruction
- * Return: void, 1 on failure
+ * Return: void, exit with -1 on failure
  */
 void pop(stack_t **stack, unsigned int line_number)
 {
@@ -72,7 +73,7 @@ void pop(stack_t **stack, unsigned int line_number)
  * swap - swaps the value of the top two elements on the stack
  * @stack: pointer to stack
  * @line_number: line number of instruction
- * Return: void, 1 on failure
+ * Return: void, exit with -1 on failure
  */
 void swap(stack_t **stack, unsigned int line_number)
 {

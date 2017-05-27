@@ -1,12 +1,12 @@
 #include "monty.h"
+
 /**
- * opcode_struct - checks for opcode's associated function and executes
+ * opcode_struct - checks for opcode's associated function and executes it
  * @opcode: opcode from user input
  * @stack: pointer to stack
  * @line_number: line number of opcode from user input
  * Return: 0 on success, 1 on failure
  */
-
 int opcode_struct(char *opcode, stack_t **stack, unsigned int line_number)
 {
 	int i;
@@ -37,5 +37,4 @@ int opcode_struct(char *opcode, stack_t **stack, unsigned int line_number)
 	}
 	printf("L%d: unknown instruction %s\n", line_number, opcode);
 	exit(EXIT_FAILURE);
-
 }
