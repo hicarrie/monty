@@ -13,6 +13,7 @@ int opcode_struct(char *opcode, stack_t **stack, unsigned int line_number)
 
 	instruction_t opcodes[] = {
 		{"pall", pall},
+		{"pint", pint},
 		{"pop", pop},
 		{"swap", swap},
 		{"nop", nop},
@@ -32,6 +33,7 @@ int opcode_struct(char *opcode, stack_t **stack, unsigned int line_number)
 			return (EXIT_SUCCESS);
 		}
 	}
+	printf("L%d: unknown instruction %s\n", line_number, opcode);
+	exit(EXIT_FAILURE);
 
-	return (EXIT_FAILURE);
 }

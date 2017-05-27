@@ -21,14 +21,13 @@ void pall(stack_t **stack, unsigned int __attribute__((unused))line_number)
 }
 
 /**
- * pint - returns the value of the top element of the stack
+ * pint - prints value at the top of the stack, plus new line
  * @stack: pointer to stack
  * @line_number: line number of instruction
  * Return: value of the top element of the stack
  */
-int pint(stack_t **stack, unsigned int line_number)
+void pint(stack_t **stack, unsigned int line_number)
 {
-	stack_t *next;
 	int value;
 
 	if (stack == NULL || *stack == NULL)
@@ -38,11 +37,7 @@ int pint(stack_t **stack, unsigned int line_number)
 	}
 
 	value = (*stack)->n; /* head node's data */
-	next = (*stack)->next; /* save next node's address */
-	free(*stack);
-	*stack = next; /* reassign next node to head */
-
-	return (value);
+	printf("%d\n", value);
 }
 
 /**
@@ -92,7 +87,10 @@ void free_stack(stack_t **stack)
  */
 void free_all(stack_t *stack, char *line, FILE *fp)
 {
-	free_stack(&stack);
+	if (stack != NULL)
+	{
+		free_stack(&stack);
+	}
 	free(line);
 	fclose(fp);
 }

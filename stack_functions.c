@@ -10,6 +10,7 @@
 void push(stack_t **stack, unsigned int line_number, char *n)
 {
 	stack_t *new = NULL;
+	int i;
 
 	if (n == NULL)
 	{
@@ -17,12 +18,14 @@ void push(stack_t **stack, unsigned int line_number, char *n)
 		exit(EXIT_FAILURE);
 	}
 
-	/* if (isdigit(n) != 0)
+	for (i = 0; n[i] != '\0'; i++)
 	{
-		printf("L%d: usage: push integer\n", line_number);
-		exit(EXIT_FAILURE);
-	} */
-
+		if (isdigit(n[i]) == 0)
+		{
+			printf("L%d: usage: push integer\n", line_number);
+			exit(EXIT_FAILURE);
+		}
+	}
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
@@ -31,15 +34,8 @@ void push(stack_t **stack, unsigned int line_number, char *n)
 	}
 
 	new->n = atoi(n);
-	printf("after new->n\n");
-	printf("new->n: %d\n", new->n);
-
 	new->prev = NULL;
-	printf("after new->prev\n");
-
 	new->next = NULL;
-	printf("after new->next\n");
-
 	if (*stack != NULL)
 	{
 		new->next = *stack;
@@ -100,8 +96,8 @@ void swap(stack_t **stack, unsigned int line_number)
  * @line_number: line number of instruction
  * Return: void
  */
-void nop(stack_t __attribute__((unused))**stack, \
-	unsigned int __attribute__((unused))line_number)
+void nop(stack_t **stack, unsigned int line_number)
 {
-	return;
+	(void)stack;
+	(void)line_number;
 }

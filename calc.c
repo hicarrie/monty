@@ -109,7 +109,7 @@ void _div(stack_t **stack, unsigned int line_number)
 	a = (*stack)->n;
 	b = (*stack)->next->n;
 
-	result = a / b;
+	result = b / a;
 
 	pop(stack, line_number);
 
