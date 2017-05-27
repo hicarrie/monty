@@ -1,5 +1,5 @@
 push 1
-push h 2
+push h
 push 3
 pall
 add
