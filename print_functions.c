@@ -75,14 +75,16 @@ void pchar(stack_t **stack, unsigned int line_number)
 void pstr(stack_t **stack, unsigned int line_number)
 {
 	int c;
+	stack_t *current;
 	(void)line_number;
 
-	while (*stack != NULL)
+	current = *stack;
+	while (current != NULL)
 	{
-		c = (*stack)->n; /* head node's data */
+		c = current->n; /* current node's data */
 		if (c > 0 && c <= 127)
 		{
-			*stack = (*stack)->next;
+			current = current->next;
 			putchar(c);
 		}
 		else
