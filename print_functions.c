@@ -57,7 +57,7 @@ void pchar(stack_t **stack, unsigned int line_number)
 	}
 
 	c = (*stack)->n; /* head node's data */
-	if (c < 0 && c > 127)
+	if (c < 0 || c > 127)
 	{
 		printf("L%d: can't pchar, value out of range\n", line_number);
 		exit(EXIT_FAILURE);
