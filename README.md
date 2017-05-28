@@ -2,6 +2,8 @@
 
 **Monty 0.98** is a scripting language that is compiled into bytecodes. It relies on a stack with instructions to manipulate it. This program is an interpreter for Monty bytecode files.
 
+-------------------
+
 ## Usage
 All files should be compiled with `gcc -Wall -Werror -Wextra -pedantic *.c -o monty`.
 
@@ -21,16 +23,20 @@ All files should be compiled with `gcc -Wall -Werror -Wextra -pedantic *.c -o mo
     1
     3
 
-## Commands
+-------------------
+
+## Monty Bytecode Commands
 - `push <int>` - pushes an integer onto the top of the stack
 - `pop` - removes the top element of the stack
 - `swap` - swaps the top two elements of the stack
 - `nop` - does nothing
 
+
 - `pall` - prints all values on the stack
 - `pint` - prints the value at the top of the stack
 - `pchar` - prints the char at the top of the stack
 - `pstr` - prints the string starting at the top of the stack
+
 
 - `add` - adds the top two elements of the stack
 - `sub` - subtracts the top element of the stack from the second element of the stack
@@ -38,6 +44,7 @@ All files should be compiled with `gcc -Wall -Werror -Wextra -pedantic *.c -o mo
 - `div` - divides the second element of the stack by the top element of the stack
 - `mod` - returns the remainder of dividing the second element of the stack by the top element of the stack
 
+-------------------
 
 ## Project Requirements
 - Formatted with Betty style standards
@@ -64,8 +71,6 @@ All files should be compiled with `gcc -Wall -Werror -Wextra -pedantic *.c -o mo
             struct stack_s *next;
     } stack_t;
 
- 
-
     /**
      * struct instruction_s - opcoode and its function
      * @opcode: the opcode
@@ -80,10 +85,21 @@ All files should be compiled with `gcc -Wall -Werror -Wextra -pedantic *.c -o mo
             void (*f)(stack_t **stack, unsigned int line_number);
     } instruction_t;
 
-## File Descriptions
+-------------------
 
+## File Descriptions
+- `monty.h` - function declarations
+- `structs.h` - struct declarations
+- `monty.c` - main function and loop
+- `opcode_struct` - function that searches through struct of function pointers
+- `print_functions` - functions that print values from stack
+- `stack_functions` - functions that manipulate the stack
+- `calc_functions.c` - math functions performed on values on the stack
+- `util_functions.c` - utility functions
+
+-------------------
 
 ## Authors
-*Carrie Ybay* - [Twitter](http://twitter.com/hicarrie_)
+*Carrie Ybay* - [GitHub](http://github.com/hicarrie) | [Twitter](http://twitter.com/hicarrie_)
 
-*Elaine Yeung* - [Twitter](http://twitter.com/egsy)
+*Elaine Yeung* - [GitHub](http://github.com/yeungegs) | [Twitter](http://twitter.com/egsy)
